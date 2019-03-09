@@ -11,10 +11,10 @@ class Routes extends Controller
 {
     public function __invoke(MapService $mapService, Request $request)
     {
-        $filter = array_filter([
-            'from' => $request->get('from'),
-            'till' => $request->get('till')
-        ]);
+        $filter = [
+            'from' => $request->get('from', date('Y-m-d H:i:s', strtotime('-1 day'))),
+            'till' => $request->get('till', date('Y-m-d H:i:s'))
+        ];
         return $this->json($mapService->getRoutes($filter));
     }
 }

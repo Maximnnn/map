@@ -12,7 +12,7 @@ class MapService
         $this->getter =$getter;
     }
 
-    public function getRoutes(array $filter): array
+    public function getRoutes(array $filter = []): array
     {
         return $this->getter->getRoutes($filter);
     }
